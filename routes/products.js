@@ -21,13 +21,13 @@ router.post('/', async function(req, res, next) {
   
   let product = new productModel(datos);
   let resultado = await product.save();
-  res.send('Registro agregado exitosamente');
+  res.json('Registro agregado exitosamente');
 });
 
 /*------------------------ PUT products listing. ------------------------*/
 router.put('/',async function(req, res, next) {
-  const filter = {id: req.query.id}; //Condición de Query
-  const update = {name: req.query.name}; //Campos a modificar
+  const filter = {id: req.body.id}; //Condición de Query
+  const update = {name: req.body.name}; //Campos a modificar
 
 
   const resultado = await productModel.findOneAndUpdate(filter, update, {
